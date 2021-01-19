@@ -1,24 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <tool-bar></tool-bar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
-import HelloWorld from './components/HelloWorld.vue'
+import ToolBar from '@/components/common/ToolBar'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  },
-  methods: {
-    name() {
-
-    }
-  },
+    ToolBar
+  }
 }
 </script>
 
@@ -30,5 +24,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+body {
+  padding: 0;
+  margin: 0;
 }
 </style>
