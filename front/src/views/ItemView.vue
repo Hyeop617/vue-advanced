@@ -1,35 +1,35 @@
 <template>
   <div>
     <section>
-      <!--      질문 상세 정보-->
-      <div class="user-container">
-        <div>
-          <i class="fas fa-user"></i>
-        </div>
-        <div class="user-description">
-          <router-link :to="`/user/${getItem.user}`">
-            {{ getItem.user }}
-          </router-link>
-          <div class="time">
-            {{getItem.time_ago}}
-          </div>
-        </div>
-      </div>
+    <user-profile :info="getItem">
+<!--      <div slot="username">{{getItem.user}}</div>-->
+      <router-link slot="username" :to="`/user/${getItem.user}`">
+        {{getItem.user}}
+      </router-link>
+      <template slot="time">
+       {{'Posted ' + getItem.time_ago}}
+      </template>
+    </user-profile>
+    </section>
+    <section>
       <h2>{{ getItem.title }}</h2>
     </section>
     <section>
       <!--      질문 댓글-->
+      <div v-html="getItem.content"></div>
     </section>
-    <!--    <p>{{getItem.title}}</p>-->
-    <!--    <p>{{getItem.content}}</p>-->
   </div>
 </template>
 
 <script>
+import UserProfile from '@/components/UserProfile'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'ItemView',
+  components: {
+    UserProfile
+  },
   computed: {
     ...mapGetters([
       'getItem'
